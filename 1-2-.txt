@@ -1,0 +1,24 @@
+check git install ->git --version
+
+git install -> yum install git
+
+git ko installstion which connect with git -> git init
+
+
+
+check git status->git status
+
+
+file add in git  -> git add file_name
+
+
+file save in git -> git commit (and message show with git commit -m "message")
+
+
+
+#jo file git status per hogi vo file local repo. m sava hogi
+
+
+
+     file add into github ->  git remote add origin https://github.com/abhikhandelwalgupta/repo_name.git
+      					 git push -u origin master

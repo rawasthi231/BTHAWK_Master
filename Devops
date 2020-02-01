@@ -1,0 +1,18 @@
+#why Devops
+#what is devops
+#unserstanding the problem related to CI/CD
+#devops Tool
+	->Git and GitHub
+	->Docker
+	->docker swarm
+	->puppet
+	->ansible
+	->selenium
+	->jenkim
+	->kubernets
+	->nagios
+	
+#devops tool using aws
+    ->Aws elastic Beenstalk
+	->setting up a CI/CD pipeline using
+	->aws codepipeline
