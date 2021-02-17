@@ -32,9 +32,8 @@ class Home extends React.Component{
             },
             success:function(res){
                 $('#submit').val('Submit');
-                var response = JSON.stringify(res);
-                console.log(response);
-                localStorage.setItem('info', response);
+                var res = JSON.stringify(res);
+                localStorage.setItem("res", res);
             },
             error:function(error){
                 console.log(error);

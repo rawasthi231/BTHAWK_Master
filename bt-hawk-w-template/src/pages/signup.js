@@ -53,15 +53,20 @@ class Signup extends React.Component {
     }
 
     componentDidMount(){
-        // this.setState({
-        //     session : JSON.parse(localStorage.getItem("info"))
-        // });
-        console.log(JSON.parse(localStorage.getItem("info")));
-        localStorage.removeItem("info");
+        var row = localStorage.getItem("res");
+        row = JSON.parse(row);
+        //console.log(Object.keys(row));
+        console.log(row.status);
+        // var result = Object.keys(row).map((key) => [Number(key), row[key]]);
+        // console.log(result);
+        
+        //localStorage.removeItem("res");
     }
 
-    // getData(a){
-    //     return this.state.session.distributor_name+" - "+a;
+    // getData(){
+    //     this.state.map((pos,rest)=>{
+    //         return pos+" - "+rest;
+    //     });
     // }
 
 
