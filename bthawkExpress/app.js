@@ -7,6 +7,7 @@ var con = require('./db');
 const cors = require('cors');
 const indexRouter = require('./routes/index');
 const catRouter = require('./routes/category');
+const productRouter = require('./routes/product');
 const distProfileRouter = require('./routes/distributor_profile');
 const loginAuth = require('./routes/login_auth');
 // var createRouter = require('./routes/create');
@@ -33,7 +34,7 @@ app.use(indexRouter);
 app.use(catRouter);
 app.use(distProfileRouter);
 app.use(loginAuth);
-
+app.use(productRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
