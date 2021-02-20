@@ -1,0 +1,24 @@
+.page-toolbar{
+    padding: 12px !important;
+}
+
+.outer-card{
+    background-color: #ffffff;
+}
+
+.fa-info-circle{
+    color: #888;
+}
+
+.export-button > button{
+    background-color: #e9e9e9;
+    padding: 6px 12px!important;
+    border: 1px solid #999;
+    border-radius: 6px !important;
+    font-size: 0.88em;
+}
+
+.export-button > button:hover{
+    color: black;
+    border: 1px solid #000;
+}
