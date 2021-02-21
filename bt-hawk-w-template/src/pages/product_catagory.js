@@ -1,26 +1,44 @@
 import React, { Component } from 'react';
+import { renderToString } from 'react-dom/server'
 import './css/product_catagory.css';
 import $ from 'jquery';
 import { Container, Row, Col, Card, CardTitle, CardBody, CardHeader, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Button } from 'bootstrap';
+import Animateinput from '../animate input/AnimateInput';
+import PageModal from './Modal';
 
 class ProductCatagory extends Component {
 
     state = {
-        class: ''
+        modalShow: 'false'
+    }
+
+    sendValue(){
+        console.log('yash');
     }
 
     searchFilter(evt){
         
         var value = (evt.target.value).toLowerCase();
         $("#myTable tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
         });
           
     }
 
+    handleModalShow = () =>{
+        $('#modalHeaderHeading').html('<h4 style={{color: "#666", width:"70%"}}><span class="fa fa-bell-o"></span>&nbsp;Add Catagory</h4>');
+        $('#modalBody').html('<input type="text" id="productName" placeholder="Enter Catagory" class="form-control" />');
+        $('#modalFooter').html('<button type="button" onclick="this.sendValue" class="btn btn-success">Create</button>');
+        $('#pageModal').fadeIn();
+    }
+
+    handleModalHide = () => {
+        $('#pageModal').fadeOut();
+    }
+
     render() {
+        const functionArray = {function:'onKeyUp',functionname:'this.searchFilter'};
         return (
             <div className="page-content-wrapper">
                 <div className="page-content">
@@ -48,10 +66,13 @@ class ProductCatagory extends Component {
                                 </button>
 
                                 &nbsp;&nbsp;
-                                <button className="btn btn-xs button-radius">
+                                <button className="btn btn-xs button-radius" onClick={this.handleModalShow}>
                                     <span className="fa fa-plus">&nbsp;</span>
                                     <small><b>Add Catagory</b></small>
                                 </button>
+
+                                <PageModal hide={this.handleModalHide} submit={this.sendValue} />
+                                
                             </div>
                         </div>
                     </div><hr />
@@ -68,10 +89,13 @@ class ProductCatagory extends Component {
                                 <CardBody className="my-card-body">
                                     <div>
                                         <Row>
-                                            <Col md={6}>
-                                                <input type="search" placeholder="Search Here" onKeyUp={this.searchFilter} className="form-control" style={{width:'50%'}} />
+                                            <Col md={6} lg={6} xl={6} xs={12} sm={12}>
+                                                {/* <input type="search" placeholder="Search Here" onKeyUp={this.searchFilter} className="form-control" style={{width:'50%', borderRadius: '12PX !important'}} /> */}
+                                                
+                                                <Animateinput label='Search' type="text" customStyle={{fontSize:'14px',padding:'10px 0px 2px 10px',width:'50%'}} functions={this.searchFilter} /> 
+                                                  
                                             </Col>
-                                            <Col md={6}>
+                                            <Col md={6} lg={6} xl={6} xs={12} sm={12}>
                                                 <span className="export-button" style={{float: 'right'}}>
                                                     <button className="btn btn-secondary">Copy</button>&nbsp;
                                                     <button className="btn btn-secondary">Excel</button>&nbsp;

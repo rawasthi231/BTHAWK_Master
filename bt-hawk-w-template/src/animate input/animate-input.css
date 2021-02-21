@@ -1,0 +1,44 @@
+
+.animateDiv {
+    position: relative;
+  }
+   
+  label {
+    position: absolute;
+    top: 0;
+    font-size: 15px;
+    margin: 8px;
+    padding: 0 8px;
+    color: #c2cad8;
+    background-color: white;
+    -webkit-transition: top .2s ease-in-out,  font-size .2s ease-in-out;
+    transition: top .2s ease-in-out,  font-size .2s ease-in-out;
+  }
+   
+  .active {
+    top: -22px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #e4531d;
+    outline: 0 none;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+   
+  .animateLabel {
+    width: 100%;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    padding: 3px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+   
+  .animateLabel:focus {
+    border-color: rgba(51,102,255,0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+    outline: none;
+  }
