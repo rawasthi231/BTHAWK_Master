@@ -1,4 +1,13 @@
+/**
+ * File Name : CommonUtility.js
+ * File Type : Utility Class file
+ * Creator : Raghvendra Awasthi
+ * Version : 1.0
+ * This class has methods for getting current date, current time and check for any variable wheather it is empty or not.
+ */
+
 // Class for Common Utility Methods
+process.env.TZ = 'Asia/Kolkata';
 class CommonUtility{
     getDate(){
         var dateObj = new Date();

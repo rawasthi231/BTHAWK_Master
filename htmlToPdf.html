@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script>
+</head>
+<body>
+	<a class="button" href="javascript:demoFromHTML()">Generate PDF</a>
+	<table >
+		
+	</table>
+	
+
+	<script type="text/javascript">
+		function demoFromHTML() {
+			var pdf = new jsPDF('p', 'pt', 'letter');
+			//source = $('#content')[0];
+			source = '<table><tr><td>1</td><td>3</td><td>3</td></tr></table>';
+			ElementHandlers = {
+				'#bypassme': function (element, renderer) {
+					return true
+				}
+			};
+			margins = {
+				top: 80,
+				bottom: 60,
+				left: 40,
+				width: 522
+			};
+			pdf.fromHTML(
+				source, 
+				margins.left, 
+				margins.top, 
+				{
+					'width': margins.width, 
+					'elementHandlers':ElementHandlers
+				},
+				function (dispose) {
+					pdf.save('Test.pdf');
+				}
+				, margins
+			);
+		}
+	</script>
+</body>
+</html>

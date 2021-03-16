@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <table id="table1">
+    <tr>
+      <td>S.N.</td>
+      <td>Category Name</td>
+      <td>Status</td>
+   </tr>
+   <tr>
+      <td>1</td>
+      <td>Cookies</td>
+      <td>Active</td>
+   </tr>
+   <tr>
+      <td>2</td>
+      <td>Biscuits</td>
+      <td>Active</td>
+   </tr>
+</table>
+
+
+<button type="button" id="btnExportToPDF">Export PDF</button>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+<script>
+ $(document).on("click", "#btnExportToPDF", function () { 
+   var table1 = 
+   tableToJson($('#table1').get(0)),
+   cellWidth = 35,
+   rowCount = 0,
+   cellContents,
+   leftMargin = 2,
+   topMargin = 12,
+   topMarginTable = 55,
+   headerRowHeight = 13,
+   rowHeight = 9,
+
+   l = {
+     orientation: 'l',
+     unit: 'mm',
+     format: 'a4',
+     compress: true,
+     fontSize: 8,
+     lineHeight: 1,
+     autoSize: false,
+     printHeaders: true
+  };
+
+  var doc = new jsPDF(l, '', '', '');
+
+   doc.setProperties({
+      title: 'Test PDF Document',
+      subject: 'This is the subject',
+      author: 'author',
+      keywords: 'generated, javascript, web 2.0, ajax',
+      creator: 'author'
+   });
+
+  doc.cellInitialize();
+
+  $.each(table1, function (i, row) {
+   rowCount++;
+   $.each(row, function (j, cellContent) {
+     console.log(typeof(cellContent));
+    //  if (rowCount == 1) {
+    //    doc.margins = 1;
+    //    doc.setFont("helvetica");
+    //    doc.setFontType("bold");
+    //    doc.setFontSize(9);
+    //    doc.cell(leftMargin, topMargin, cellWidth, headerRowHeight, cellContent, i)
+    // }
+    // else if (rowCount == 2) {
+    //    doc.margins = 1;
+    //    doc.setFont("times ");
+    //    doc.setFontType("italic"); 
+    //    doc.setFontSize(8);                    
+    //    doc.cell(leftMargin, topMargin, cellWidth, rowHeight, cellContent, i); 
+    // }
+    // else {
+    //    doc.margins = 1;
+    //    doc.setFont("courier ");
+    //    doc.setFontType("bolditalic ");
+    //    doc.setFontSize(6.5);                    
+    //    doc.cell(leftMargin, topMargin, cellWidth, rowHeight, cellContent, i); 
+    // }
+ })
+})
+
+  //doc.save('sample Report.pdf');  
+});
+
+
+
+
+ function tableToJson(table) {
+   var data = [];
+   var headers = [];
+   for (var i=0; i<table.rows[0].cells.length; i++) {
+     headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi,'');
+  }
+  for (var i=1; i<table.rows.length; i++) {
+     var tableRow = table.rows[i];
+     var rowData = {};
+     for (var j=0; j<tableRow.cells.length; j++) {
+       rowData[ headers[j] ] = tableRow.cells[j].innerHTML;
+    }
+    data.push(rowData);
+ }       
+
+ return data; }
+</script>
+</body>
+</html>
+

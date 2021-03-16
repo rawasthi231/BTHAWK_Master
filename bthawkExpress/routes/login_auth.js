@@ -1,17 +1,28 @@
+/**
+ * File Name : login_auth.js
+ * File Type : Express Server Route
+ * Creator : Raghvendra Awasthi
+ * Version : 1.0
+This Router includes routes for 
+ * API for Login Authentication.
+ */
 const express = require('express');
 const router = express.Router();
 const con = require('../db');
+var response = {};
 
+// Route for getting incoming HTTP POST request for login.
 router.post('/login', async (req, res) => {
-    var output,data,sessionData;
-    let requestFrom = req.body.request;
+    var data = {}, sessionData = {};
+    let requestFrom = req.body.requestFrom;
     res.header('Access-Control-Allow-Origin','*');
     res.setHeader('Content-Type','application/json');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, Accept');
+
     if (requestFrom == 'Web') {
-      let email = con.escape(req.body.uName);
-      let password = req.body.uPass;
+      let email = con.escape(req.body.userName);
+      let password = req.body.password;
       try {
         let query = `select * from tbl_distributor_users WHERE status='Active' AND distributor_email = ${email} AND password = '${password}'`;
         con.query(query, (error, result) => {
@@ -31,10 +42,11 @@ router.post('/login', async (req, res) => {
               }
               return chars.join('');
             }
+
             var session_id = str_shuffle('0123456789abcdefghijklmnopqrstuvwxyz');
   
             sessionData.distributor_id = dis_id;
-  
+
             if (result[0].session_id == "") {
               let updateQuery = `UPDATE tbl_distributor_users SET login_datetime='${timestamp}',session_id='${session_id}',activity_time='${timestamp}' where distributor_user_id='${dis_usr_id}'`;
               con.query(updateQuery);
@@ -80,13 +92,13 @@ router.post('/login', async (req, res) => {
                   }
   
                   //data = {"header": header, "session": sessionData};
-                  output = {
+                  response = {
                     "status": 200,
                     "msg": "Fetch Successfull",
                     "data": data
                   }
-                  //output = JSON.stringify(output);
-                  res.json(output);
+                  //response = JSON.stringify(response);
+                  res.end(JSON.stringify(response));
                 } else{
                   console.log('Inside Else - Blank Session Id')
                 }
@@ -140,13 +152,13 @@ router.post('/login', async (req, res) => {
                     }
   
                     data = { "header": header, "session": sessionData };
-                    output = {
+                    response = {
                       "status": 200,
                       "msg": "Fetch Successfull",
                       "data": data
                     }
-                    //output = JSON.stringify(output);
-                    res.json(output);
+                    //response = JSON.stringify(response);
+                    res.end(JSON.stringify(response));
                   } else{
                     console.log('Inside Else - With Session Id')
                   }
@@ -155,24 +167,25 @@ router.post('/login', async (req, res) => {
                 let q = `select * from tbl_distributor_users where distributor_id='${dis_id}' and session_id='${session_id}'`
                 con.query(q, (error, info) => {
                   if (info.length) {
-                    output = {"status": 202, "msg": "You are already logged in same browser.Please logout and then try again!", "data":{} }
+                    response = {"status": 202, "msg": "You are already logged in same browser.Please logout and then try again!", "data":{} }
                   } else {
                     /** Base64 Encoding */
                     //let id = btoa(dis_usr_id);
                     id = dis_usr_id;
-                    output = { "status": 200, "msg": "Successfull", "data": { "header" : { "url": `/login-confirmation?logid=${id}`}}};
+                    response = { "status": 200, "msg": "Successfull", "data": { "header" : { "url": `/login-confirmation?logid=${id}`}}};
                   }
                 });
-                res.end(JSON.stringify(output));
+                res.end(JSON.stringify(response));
               }
             }
+            
           }
           else {
-            output = {
+            response = {
               "status" : "400",
               "msg" : "Email and password does not match!",
             }
-            res.end(JSON.stringify(output));
+            res.end(JSON.stringify(response));
           }
         });
       } catch (e) {
@@ -182,5 +195,7 @@ router.post('/login', async (req, res) => {
       res.end(JSON.stringify(req.body));
     }
   });
+
+  //con.end();
 
   module.exports = router;

@@ -25,3 +25,33 @@
 .tabItems{
     display: none;
 }
+.product-label{
+  text-transform: uppercase;
+  font-size: 8px;
+  color:gray;
+  font-weight: 800;
+}
+
+.btn-bt1{
+  background : #e4531d;
+  color : #fff;
+  border-radius : 10px;
+}
+.btn-bt1:hover{
+  background : #e4531d;
+  color : #fff;
+}
+.btn-bt2{
+  background : #1c237e;
+  color : #fff;
+  border-radius : 10px;
+}
+.btn-bt2:hover{
+  background : #1c237e;
+  color : #fff;
+}
+
+#eye {
+  margin-left: -10px;
+  cursor: pointer;
+}

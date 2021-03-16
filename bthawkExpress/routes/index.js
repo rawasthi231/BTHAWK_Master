@@ -13,9 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// router.get('/', function (req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
 
 router.post('/signup', (req, res) => {
   let data = req.body;

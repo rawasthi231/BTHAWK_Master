@@ -1,0 +1,19 @@
+
+.button-radius{
+    border: 1px solid #e4531d; 
+    border-radius: 12px !important;
+    color: #e4531d;
+    margin-top: 4px; 
+    padding: 4px 6px 4px 6px;
+    background-color: white; 
+}
+
+.button-radius:hover { 
+    color: #ffffff;
+    background-color: #e4531d;  
+}
+
+.card-radius{
+    box-shadow: 2px 2px 5px #d9d9d9, -2px -2px 5px #ffffff;
+    border-radius: 15px !important;
+}

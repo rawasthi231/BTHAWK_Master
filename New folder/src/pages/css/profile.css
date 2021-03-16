@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+.profile-type-row{
+    margin: 10px 0px 10px 20px;
+}
+.profile-nav-link{
+    display: inline-block;
+    text-decoration: none;
+}
+.profile-type > li{
+   
+    cursor: pointer;
+}
+.profile-type > li:hover{
+    border-bottom: 2px solid #e4531d;
+}
+.profile-nav-link > h5{
+    margin: 0;
+    padding: 15px 10px 13px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+}
+
+.profile-img{
+    padding: 12px 0px 2px 0px;
+}
+.profile-img > img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;  
+}
+.img-round{
+    border: none;
+    border-radius: 50% !important;
+}
+
+.profile-info{
+   text-align: center;
+}
+.profile-info > h3{
+    font-weight: 600;
+}
+.profile-info > p{
+    margin: 0;
+    font-size: 14px;
+}
+
+.contact-info-title{
+    text-align: center;
+    padding: 15px;
+    background-color: #e4531d;
+    border: none;
+    border-radius: 8px 8px 0px 0px !important;
+    margin-bottom: 10px;
+}
+.contact-info-title > span{
+    font-size: 16px;
+    font-family: "Ubuntu", sans-serif;
+    color: white;
+}
+
+.contact-info > div > small{
+    font-family: 'Ubuntu', sans-serif;
+    color: #6c757d;
+    font-size: 13px;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.contact-info > div > span{
+    color: #444;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.profile-type-list{
+    padding: 15px;
+}
+
+.profile-type-list > li{
+    cursor: pointer;
+    padding: 0;
+}
+
+.profile-type-list > li > button{
+    background-color: white;
+}
+
+.profile-type-list > li > button:hover{
+    padding: 6px;
+    background: #e4531d !important;
+    border: none;
+    border-radius: 12px !important;
+    color: white !important;
+}
+
+.tabItems{
+    display: none;
+}
+.activeProfileTab{
+    display: block;
+}
+
+.profile_active > .btn{
+    color: #fff;
+    padding: 6px;
+    background: #1c237e !important;
+    border: none;
+    border-radius: 12px !important;
+}
+
+.profile_active > button:hover{
+    color: white;
+}

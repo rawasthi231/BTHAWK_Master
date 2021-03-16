@@ -1,27 +1,26 @@
-
 .animateDiv {
     position: relative;
   }
    
-  label {
+  .animate_label {
     position: absolute;
     top: 0;
-    font-size: 15px;
+    font-size: 13px;
     margin: 8px;
     padding: 0 8px;
     color: #c2cad8;
-    background-color: white;
+    background-color: transparent;
     -webkit-transition: top .2s ease-in-out,  font-size .2s ease-in-out;
     transition: top .2s ease-in-out,  font-size .2s ease-in-out;
   }
    
   .active {
     top: -22px;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
     color: #e4531d;
     outline: 0 none;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     text-transform: uppercase;
   }
    
@@ -41,4 +40,10 @@
     border-color: rgba(51,102,255,0.8);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
     outline: none;
+  }
+
+  .animateLabel[type=date]::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+  ::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+  ::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+      color: transparent;
   }
